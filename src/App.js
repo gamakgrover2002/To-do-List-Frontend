@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react"; 
-const api_base = "http://localhost:3004"; 
+import { useEffect, useState } from "react"; //importing useState and useEffect  
+const api_base = "https://zesty-kitten-be32b3.netlify.app"; //assing localhost a constant
 
+//useState to change value of data
 function App() {
-  const [todos, setTodos] = useState([]); 
-  const [popupActive, setPopupActive] = useState(false); 
-  const [newTodo, setNewTodo] = useState("");
+  const [todos, setTodos] = useState([]); //todos assigned empty array and setTodos changing its value
+  const [popupActive, setPopupActive] = useState(false); //popupActive assigned value false and setPopupActive changing its value
+  const [newTodo, setNewTodo] = useState("");//newTodo is assigned value of empty string and setNewTodo is used to change its value
 
   useEffect(() => {
-    GetTodos(); 
+    GetTodos(); //calling GetTodos function which gets data
   }, []);
+  //The useEffect Hook allows you to perform side effects in your components.Some examples of side effects are: fetching data, directly updating the DOM, and timers.
 
+  //makking function GetTodos which fetch data from our api 
   const GetTodos = () => {
     fetch(api_base + "/todos")
-      .then((res) => res.json())
-      .then((data) => setTodos(data))
-      .catch((err) => console.error("Error: ", err));
+      .then((res) => res.json()) //????
+      .then((data) => setTodos(data)) //????
+      .catch((err) => console.error("Error: ", err));//displays error in case error in fetching data
   };
   
+  //completeTodo function to fetch complete data based on id
   const completeTodo = async (id) => {
     const data = await fetch(api_base + "/todo/complete/" + id).then((res) =>
       res.json()
@@ -32,7 +36,7 @@ function App() {
       })
     );
   };
-  
+  //addtodo to add data by call
   const addTodo = async () => {
     const data = await fetch(api_base + "/todo/new", {
       method: "POST",
