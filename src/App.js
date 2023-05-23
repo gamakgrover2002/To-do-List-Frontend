@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"; //importing useState and useEffect  
-const api_base = "https://zesty-kitten-be32b3.netlify.app"; //assing localhost a constant
+const api_base = "https://backend-pbpr.onrender.com"; //assing localhost a constant
 
 //useState to change value of data
 function App() {
